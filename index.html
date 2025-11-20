@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control IoT</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+    <script>
+      var accessToken = "f7c5e94de0f78646cf0be91d796878fe4a245100";
+      var deviceID = "0a10aced202194944a067814";
+      var url = "https://api.particle.io/v1/devices/" + deviceID + "/led";
+
+      function switchOn() {
+        $.post(url, { params: "on", access_token: accessToken });
+      }
+
+      function switchOff() {
+        $.post(url, { params: "off", access_token: accessToken });
+      }
+    </script>
+
+    <style>
+      body {
+        background: #f7f7f7;
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 25px;
+        color: #333;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.25s ease;
+        font-weight: 600;
+      }
+
+      .btn-on {
+        background: #4ade80;
+        color: #fff;
+      }
+
+      .btn-off {
+        background: #f87171;
+        color: #fff;
+      }
+
+      .btn:hover {
+        transform: scale(1.04);
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h1>Control IoT</h1>
+
+      <button class="btn btn-on" onclick="switchOn()">Encender</button>
+      <button class="btn btn-off" onclick="switchOff()">Apagar</button>
+    </div>
+  </body>
+</html>
